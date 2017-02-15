@@ -7,13 +7,24 @@ import { addTodo, generateId, findById, updateTodos, toggleTodo, removeTodo, fil
 import { loadTodos, createTodo, saveTodo, destroyTodo } from './lib/todoService';
 
 const modalStyles = {
+  overlay: {
+    position          : 'fixed',
+    top               : 0,
+    left              : 0,
+    right             : 0,
+    bottom            : 0,
+    backgroundColor   : 'rgba(0, 0, 0, 0.54)'
+  },
   content : {
     top                   : '50%',
     left                  : '50%',
     right                 : 'auto',
     bottom                : 'auto',
     marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
+    transform             : 'translate(-50%, -50%)',
+    backgroundColor       : '#fafafa',
+    width                 : '384px',
+    height                : '197px'
   }
 };
 
@@ -120,7 +131,7 @@ class App extends Component {
       "id": newId,
       title: this.state.modalTitle,
       importance: "low",
-      creator: "Current User",
+      creator: "User 1",
       time: 0,
       percentComplete: 0,
       description: "",
@@ -167,7 +178,7 @@ class App extends Component {
         </div>
         <div className="Todo-App">
 
-        <div>
+        <div id="modal">
           <Modal
             isOpen={this.state.modalIsOpen}
             onAfterOpen={this.afterOpenModal}
@@ -175,13 +186,13 @@ class App extends Component {
             style={modalStyles}
             contentLabel="Example Modal" >
 
-            <h2 ref="subtitle">Title</h2>
+            <p id="modalTitle">Title</p>
             {this.state.errorMessage && <span className="error">{this.state.errorMessage}</span>}
             <form onSubmit={this.createNewTodo}>
               <input value={this.state.modalTitle} onChange={this.handleTitleChange} />
             </form>
 
-            <button onClick={this.createNewTodo}>save</button>
+            <button id="saveModal" onClick={this.createNewTodo}>save</button>
             <button onClick={this.closeModal}>close</button>
           </Modal>
         </div>

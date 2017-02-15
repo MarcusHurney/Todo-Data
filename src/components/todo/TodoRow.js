@@ -13,15 +13,17 @@ export class TodoRow extends Component {
     const changeTitle = partial(this.props.changeTitle, id);
 
     return (
-      <tr>
+      <tr className="todoRow">
         <td>
           <input
+            className="regular-checkbox"
             type="checkbox"
             checked={selected}
             onChange={handleToggle} />
         </td>
         <td>
           <input
+            className="title"
             value={title}
             onChange={changeTitle}
           />
@@ -34,22 +36,25 @@ export class TodoRow extends Component {
           </select>
         </td>
         <td>{creator}</td>
-        <td>
+        <td className="input-icon input-icon-right">
+          <i>hrs</i>
           <input
+            className="timeInput"
             value={time}
             onChange={handleTimeChange}
           />
-          minutes
         </td>
-        <td>
+        <td className="input-icon input-icon-right">
+          <i>%</i>
           <input
+            className="percentInput"
             value={percentComplete}
             onChange={handlePercentChange}
           />
-          %
         </td>
         <td>
           <input
+            placeholder="Input text"
             value={description}
           />
         </td>

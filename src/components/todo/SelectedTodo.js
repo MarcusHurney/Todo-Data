@@ -3,16 +3,24 @@ import React from 'react';
 export const SelectedTodo = (props) => {
   if (props.selectedTodos.length) {
     return (
-      <div>
-        <h1>{props.selectedTodos.length} items selected</h1>
-        <h1 onClick={props.handleRemove}>Delete Selected</h1>
+      <div className="selectedTodo">
+        <div className="tableTitleDiv">
+          <h1 className="tableTitle">{props.selectedTodos.length} item(s) selected</h1>
+        </div>
+        <div className="tableActionsDiv">
+          <p onClick={props.handleRemove}>Delete Selected</p>
+        </div>
       </div>
     );
   } else {
     return (
-      <div>
-        <h1>Add Todo</h1>
-        <h1 onClick={props.openModal}>+</h1>
+      <div className="selectedTodo">
+        <div className="tableTitleDiv">
+          <h1 className="tableTitle">Add Todo</h1>
+        </div>
+        <div className="tableActionsDiv">
+          <p id="plusBtn"onClick={props.openModal}>+</p>
+        </div>
       </div>
     );
   }
