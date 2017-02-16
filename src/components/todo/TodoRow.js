@@ -57,10 +57,10 @@ export class TodoRow extends Component {
             placeholder="Input text"
             value={description}
           />
+          <i className="material-icons sm-17 grey">create</i>
         </td>
-        <td>Pencil</td>
       </tr>
-    )
+    );
   }
 }
 

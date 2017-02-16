@@ -2,31 +2,11 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Modal from 'react-modal';
-import { TodoForm, TodoList, Footer, TodoRowHeader, TodoRow, SelectedTodo } from './components/todo';
-import { addTodo, generateId, findById, updateTodos, toggleTodo, removeTodo, filterTodos, updateImportance, updatePercent, updateTime, updateTitle } from './lib/todoHelpers';
+import { TodoRowHeader, TodoRow, SelectedTodo } from './components/todo';
+import { addTodo, generateId, findById, updateTodos, toggleTodo, removeTodo, updateImportance, updatePercent, updateTime, updateTitle } from './lib/todoHelpers';
 import { loadTodos, createTodo, saveTodo, destroyTodo } from './lib/todoService';
+import { modalStyles } from './components/modal/modal_styles';
 
-const modalStyles = {
-  overlay: {
-    position          : 'fixed',
-    top               : 0,
-    left              : 0,
-    right             : 0,
-    bottom            : 0,
-    backgroundColor   : 'rgba(0, 0, 0, 0.54)'
-  },
-  content : {
-    top                   : '50%',
-    left                  : '50%',
-    right                 : 'auto',
-    bottom                : 'auto',
-    marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)',
-    backgroundColor       : '#fafafa',
-    width                 : '384px',
-    height                : '197px'
-  }
-};
 
 class App extends Component {
 

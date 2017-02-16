@@ -59,8 +59,31 @@ li:hover span.delete-item {
 
 /* TodoRow */
 /* Helper Classes */
+#descriptionIcon {
+  position: relative;
+  top: 3px; }
+
+#addIcon {
+  padding-top: 24px;
+  padding-right: 24px; }
+
+#addIcon:hover {
+  cursor: pointer; }
+
+.blue-background {
+  background-color: rgba(0, 71, 187, 0.12) !important; }
+
 .text-center {
   text-align: center; }
+
+.grey {
+  color: #808080; }
+
+.sm-13 {
+  font-size: 13px; }
+
+.sm-17 {
+  font-size: 17px; }
 
 /* App.js */
 h1 {
@@ -97,6 +120,9 @@ input:focus {
 select {
   background: transparent;
   border: none; }
+
+select option {
+  color: red; }
 
 select:focus {
   outline: none; }
@@ -166,6 +192,18 @@ table .todoRow:hover input {
   width: 864px;
   height: 64px; }
 
+.selectedTodo #selectedTitle {
+  padding-top: 20px;
+  padding-left: 24px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  color: #0047bb; }
+
 .tableTitleDiv {
   float: left; }
 
@@ -177,7 +215,7 @@ table .todoRow:hover input {
   padding-left: 24px;
   font-family: Roboto;
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 1000;
   font-style: normal;
   font-stretch: normal;
   line-height: 28px;

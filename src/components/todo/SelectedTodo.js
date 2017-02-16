@@ -3,12 +3,15 @@ import React from 'react';
 export const SelectedTodo = (props) => {
   if (props.selectedTodos.length) {
     return (
-      <div className="selectedTodo">
+      <div className="selectedTodo blue-background">
         <div className="tableTitleDiv">
-          <h1 className="tableTitle">{props.selectedTodos.length} item(s) selected</h1>
+          <h1 id="selectedTitle" >{props.selectedTodos.length} item(s) selected</h1>
         </div>
         <div className="tableActionsDiv">
-          <p onClick={props.handleRemove}>Delete Selected</p>
+          <i
+            id="addIcon"
+            className="material-icons grey"
+            onClick={props.handleRemove}>delete</i>
         </div>
       </div>
     );
@@ -19,7 +22,10 @@ export const SelectedTodo = (props) => {
           <h1 className="tableTitle">Add Todo</h1>
         </div>
         <div className="tableActionsDiv">
-          <p id="plusBtn"onClick={props.openModal}>+</p>
+          <i
+            id="addIcon"
+            className="material-icons grey"
+            onClick={props.openModal}>add</i>
         </div>
       </div>
     );
