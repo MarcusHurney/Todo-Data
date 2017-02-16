@@ -12,8 +12,8 @@ export const TodoRowHeader = () => {
       <th>Title</th>
       <th>Importance</th>
       <th>Creator</th>
-      <th className="text-center">Time(hrs)</th>
-      <th className="text-center">Complete(%)</th>
+      <th className="text-center">Time (hrs)</th>
+      <th className="text-center">Complete (%)</th>
       <th><i id="descriptionIcon" className="material-icons sm-13 grey">chat</i> Description</th>
     </tr>
   );

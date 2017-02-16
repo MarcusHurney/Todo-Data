@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Modal from 'react-modal';
-import { TodoRowHeader, TodoRow, SelectedTodo } from './components/todo';
-import { addTodo, generateId, findById, updateTodos, toggleTodo, removeTodo, updateImportance, updatePercent, updateTime, updateTitle } from './lib/todoHelpers';
+import { TodoRowHeader, TodoRow, SelectedTodo, Footer } from './components/todo';
+import { addTodo, generateId, findById, updateTodos, toggleTodo, removeTodo, updateImportance, updatePercent, updateTime, updateTitle, updateDescription } from './lib/todoHelpers';
 import { loadTodos, createTodo, saveTodo, destroyTodo } from './lib/todoService';
 import { modalStyles } from './components/modal/modal_styles';
 
@@ -85,17 +85,28 @@ class App extends Component {
 
   handlePercentChange = (id, event) => {
     const newPercent = event.target.value;
-    const todo = findById(id, this.state.todos);
-    const updatedTodo = updatePercent(todo, newPercent);
-    const updatedTodos = updateTodos(this.state.todos, updatedTodo);
-    this.setState({ todos: updatedTodos });
-    saveTodo(updatedTodo);
+    if (newPercent <= 100) {
+      const todo = findById(id, this.state.todos);
+      const updatedTodo = updatePercent(todo, newPercent);
+      const updatedTodos = updateTodos(this.state.todos, updatedTodo);
+      this.setState({ todos: updatedTodos });
+      saveTodo(updatedTodo);
+    }
   }
 
   handleTimeChange = (id, event) => {
     const newHours = event.target.value;
     const todo = findById(id, this.state.todos);
     const updatedTodo = updateTime(todo, newHours);
+    const updatedTodos = updateTodos(this.state.todos, updatedTodo);
+    this.setState({ todos: updatedTodos });
+    saveTodo(updatedTodo);
+  }
+
+  handleDescriptionChange = (id, event) => {
+    const newDescription = event.target.value;
+    const todo = findById(id, this.state.todos);
+    const updatedTodo = updateDescription(todo, newDescription);
     const updatedTodos = updateTodos(this.state.todos, updatedTodo);
     this.setState({ todos: updatedTodos });
     saveTodo(updatedTodo);
@@ -111,7 +122,7 @@ class App extends Component {
       "id": newId,
       title: this.state.modalTitle,
       importance: "low",
-      creator: "User 1",
+      creator: "Elmir",
       time: 0,
       percentComplete: 0,
       description: "",
@@ -121,7 +132,8 @@ class App extends Component {
     this.setState({
       todos: updatedTodos,
       modalIsOpen: false,
-      modalTitle: ''
+      modalTitle: '',
+      errorMessage: ''
     });
     createTodo(newTodo);
   }
@@ -134,18 +146,29 @@ class App extends Component {
 
   changeTitle = (id, event) => {
     const newTitle = event.target.value;
-    const todo = findById(id, this.state.todos);
-    const updatedTodo = updateTitle(todo, newTitle);
-    const updatedTodos = updateTodos(this.state.todos, updatedTodo);
-    this.setState({ todos: updatedTodos });
-    saveTodo(updatedTodo);
+    if (newTitle.length < 11) {
+      const todo = findById(id, this.state.todos);
+      const updatedTodo = updateTitle(todo, newTitle);
+      const updatedTodos = updateTodos(this.state.todos, updatedTodo);
+      this.setState({ todos: updatedTodos, errorMessage: '' });
+      saveTodo(updatedTodo);
+    }
   }
 
   handleTitleChange = (event) => {
-    this.setState({
-      modalTitle: event.target.value
-    });
+    if (event.target.value.length > 10) {
+      this.setState({
+        errorMessage: 'Max length 10 characters'
+      });
+    } else {
+      this.setState({
+        errorMessage: '',
+        modalTitle: event.target.value
+      });
+    }
   }
+
+
 
   render() {
 
@@ -166,14 +189,23 @@ class App extends Component {
             style={modalStyles}
             contentLabel="Example Modal" >
 
-            <p id="modalTitle">Title</p>
+            <h1 id="modalTitle">Title</h1>
+
             {this.state.errorMessage && <span className="error">{this.state.errorMessage}</span>}
+
             <form onSubmit={this.createNewTodo}>
-              <input value={this.state.modalTitle} onChange={this.handleTitleChange} />
+              <input id="titleInput" value={this.state.modalTitle} onChange={this.handleTitleChange} />
             </form>
 
-            <button id="saveModal" onClick={this.createNewTodo}>save</button>
-            <button onClick={this.closeModal}>close</button>
+            <span id="titleCount" className="grey">
+              {this.state.modalTitle.length} / 10
+            </span>
+
+
+            <div id="modalBtns">
+              <button id="closeModal" onClick={this.closeModal}>cancel</button>
+              <button id="saveModal" onClick={this.createNewTodo}>save</button>
+            </div>
           </Modal>
         </div>
 
@@ -191,11 +223,13 @@ class App extends Component {
               {this.state.todos.map(todo => {
                 return (
                   <TodoRow
+                    key={todo.id}
                     todo={todo}
                     handleToggle={this.handleToggle}
                     handleImportanceChange={this.handleImportanceChange}
                     handlePercentChange={this.handlePercentChange}
                     handleTimeChange={this.handleTimeChange}
+                    handleDescriptionChange={this.handleDescriptionChange}
                     openModal={this.openModal}
                     changeTitle={this.changeTitle}
                   />
@@ -203,6 +237,9 @@ class App extends Component {
               })}
             </tbody>
           </table>
+
+          <Footer />
+
         </div>
       </div>
     );

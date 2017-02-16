@@ -14,6 +14,8 @@ export const updateTime = (todo, newTime) => ({ ...todo, time: newTime });
 
 export const updateTitle = (todo, newTitle) => ({ ...todo, title: newTitle });
 
+export const updateDescription = (todo, newDescription) => ({ ...todo, description: newDescription });
+
 export const updateTodos = (list, updatedTodo) => {
   // find out where in the list is the todo thats been updated
   const updatedIndex = list.findIndex(item => item.id === updatedTodo.id);

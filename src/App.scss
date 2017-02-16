@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  min-height: 1000px;
+  background-color: #f2f2ed;
 }
 
 .App-logo {
@@ -56,6 +58,7 @@ li:hover span.delete-item {
 
 .error {
   color: red;
+  float: right;
 }
 
 .success {
@@ -131,17 +134,19 @@ li:hover span.delete-item {
   top: 3px;
 }
 
-#addIcon {
+/* change to a class */
+.addDelIcon {
   padding-top: 24px;
-  padding-right: 24px;
+  padding-right: 18px;
 }
 
-#addIcon:hover {
+.addDelIcon:hover {
   cursor: pointer;
 }
 
 .blue-background {
   background-color: rgba(0, 71, 187, 0.12) !important;
+  transition: all 0.3s ease-in-out;
 }
 
 .text-center {
@@ -216,7 +221,8 @@ select:focus {
 table {
   margin-top: 0;
   background-color: #fafafa;
-  width: 864px;
+  width: 1024px;
+  border-spacing: 0;
 
   td {
     padding: 10px;
@@ -230,6 +236,7 @@ table {
     line-height: 1.43;
     letter-spacing: normal;
     color: rgba(0, 0, 0, 0.87);
+    border-top: 1px solid	#C0C0C0;
   }
 
   th {
@@ -251,7 +258,12 @@ table {
     min-width: 1024px;
     height: 48px;
     background-color: #fafafa;
-    // box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12);
+  }
+
+  .todoRow {
+    .regular-checkbox:hover {
+      cursor: pointer;
+    }
   }
 
   .todoRow:hover {
@@ -268,10 +280,94 @@ table {
   }
 }
 
+/* TodoRowHeader */
+#todoRowHeader {
+  height: 56px;
+}
+
+
+/* Modal Styles (app.js) */
+
+#modalTitle {
+  width: 40px;
+  height: 28px;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: 1000;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.4;
+  letter-spacing: normal;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+#titleInput {
+  width: 375px;
+  height: 40px;
+  border-bottom: solid 2px #0047bb;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 2;
+  letter-spacing: normal;
+  color: rgba(0, 0, 0, 0.87);
+  margin-top: 25px;
+}
+
+#titleCount {
+  float: right;
+  width: 32px;
+  height: 16px;
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  text-align: left;
+  color: rgba(0, 0, 0, 0.54);
+  padding-top: 8px;
+  position: relative;
+  right: 25px;
+}
+
+#modalBtns {
+  float: right;
+  margin-top: 60px;
+
+  button {
+    width: 54px;
+    height: 16px;
+    background-color: Transparent;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.14;
+    letter-spacing: normal;
+    text-align: center;
+    color: #0047bb;
+    text-transform: uppercase;
+  }
+  #closeModal {
+    margin-right: 8px;
+  }
+}
+
 #saveModal {
   background-color: #fafafa;
-
 }
+
+/* End Modal Styles (app.js) */
+
 
 
 
@@ -288,10 +384,12 @@ table {
 .selectedTodo {
   margin: 0;
   background-color: #fafafa;
-  width: 864px;
+  width: 1024px;
   height: 64px;
+  transition: all 0.3s ease-in-out;
 
   #selectedTitle {
+    transition: all 0.3s ease-in-out;
     padding-top: 20px;
     padding-left: 24px;
     font-family: Roboto;
@@ -313,7 +411,14 @@ table {
   float: right;
 }
 
+/* selects the more icon */
+
+.tableActionsDiv:nth-child(2) {
+  padding-right: 24px;
+}
+
 .tableTitle {
+  transition: all 0.3s ease-in-out;
   padding-top: 20px;
   padding-left: 24px;
   font-family: Roboto;
@@ -329,6 +434,10 @@ table {
 .input-icon {
   position: relative;
 }
+// .input-icon-right {
+//   padding-right: 2px;
+//   margin-right: 0px;
+// }
 
 .input-icon > i {
   position: absolute;
@@ -341,6 +450,52 @@ table {
 	font-style: normal;
 }
 
+/* Start Footer */
+#footer {
+  width: 1024px;
+  height: 56px;
+  background-color: #fafafa;
+  border-top: 1px solid #C0C0C0;
+
+  p {
+    padding: 0;
+    margin: 0;
+  }
+
+  span {
+    padding-left: 25px;
+  }
+}
+
+#footerContent {
+  float: right;
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  color: rgba(0, 0, 0, 0.54);
+  position: relative;
+  top: 20px;
+}
+
+#footerArrows {
+  float: right;
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  position: relative;
+  top: 15px;
+  padding-right: 50px;
+}
+/* End Footer */
+
 /* Input Icons for % and hours */
 
 .input-icon > input {
@@ -349,11 +504,12 @@ table {
 }
 
 .input-icon-right > i {
+  text-align: left;
   right: 0;
 }
 
 .input-icon-right > input {
   padding-left: 0;
-  padding-right: 25px;
+  padding-right: 5px;
   text-align: right;
 }

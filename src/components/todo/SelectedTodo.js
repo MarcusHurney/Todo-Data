@@ -8,10 +8,9 @@ export const SelectedTodo = (props) => {
           <h1 id="selectedTitle" >{props.selectedTodos.length} item(s) selected</h1>
         </div>
         <div className="tableActionsDiv">
-          <i
-            id="addIcon"
-            className="material-icons grey"
+          <i className="addDelIcon material-icons grey"
             onClick={props.handleRemove}>delete</i>
+          <i className="material-icons grey">more_vert</i>
         </div>
       </div>
     );
@@ -22,10 +21,9 @@ export const SelectedTodo = (props) => {
           <h1 className="tableTitle">Add Todo</h1>
         </div>
         <div className="tableActionsDiv">
-          <i
-            id="addIcon"
-            className="material-icons grey"
+          <i className="addDelIcon material-icons grey"
             onClick={props.openModal}>add</i>
+          <i className="material-icons grey">more_vert</i>
         </div>
       </div>
     );

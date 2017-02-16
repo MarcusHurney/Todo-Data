@@ -11,6 +11,7 @@ export class TodoRow extends Component {
     const handleToggle = partial(this.props.handleToggle, id);
     const handleTimeChange = partial(this.props.handleTimeChange, id);
     const changeTitle = partial(this.props.changeTitle, id);
+    const handleDescriptionChange = partial(this.props.handleDescriptionChange, id);
 
     return (
       <tr className="todoRow">
@@ -56,6 +57,7 @@ export class TodoRow extends Component {
           <input
             placeholder="Input text"
             value={description}
+            onChange={handleDescriptionChange}
           />
           <i className="material-icons sm-17 grey">create</i>
         </td>
