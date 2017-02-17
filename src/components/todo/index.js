@@ -1,4 +1,4 @@
 export { TodoRowHeader } from './TodoRowHeader';
 export { TodoRow } from './TodoRow';
-export { SelectedTodo } from './SelectedTodo';
+export { ActionsHeader } from './ActionsHeader';
 export { Footer } from './Footer';

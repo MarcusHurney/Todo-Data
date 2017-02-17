@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Modal from 'react-modal';
-import { TodoRowHeader, TodoRow, SelectedTodo, Footer } from './components/todo';
+import { TodoRowHeader, TodoRow, ActionsHeader, Footer } from './components/todo';
 import { addTodo, generateId, findById, updateTodos, toggleTodo, removeTodo, updateImportance, updatePercent, updateTime, updateTitle, updateDescription } from './lib/todoHelpers';
 import { loadTodos, createTodo, saveTodo, destroyTodo } from './lib/todoService';
 import { centeredModalStyles } from './components/modal/centered_modal_styles';
@@ -283,7 +283,7 @@ class App extends Component {
 
               <div id="modalBtns">
                 <button id="closeModal" onClick={this.closeModal}>cancel</button>
-                <button id="saveModal" onClick={this.createNewTodo}>save</button>
+                <button onClick={this.createNewTodo}>save</button>
               </div>
             </Modal>
           </div>
@@ -297,7 +297,7 @@ class App extends Component {
               style={this.state.descripModalStyles}
               contentLabel="Example Modal" >
 
-              <h1 id="modalTitle">description</h1>
+              <h1 id="modalTitle">Description</h1>
 
               {this.state.errorMessage && <span className="error">{this.state.errorMessage}</span>}
 
@@ -312,7 +312,7 @@ class App extends Component {
           </div>
           {/* End Description Modal */}
 
-          <SelectedTodo
+          <ActionsHeader
             openModal={this.openModal}
             selectedTodos={this.state.selectedTodos}
             createNewTodo={this.createNewTodo}

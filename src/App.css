@@ -1,7 +1,9 @@
+body {
+  background-color: #f2f2ed; }
+
 .App {
   text-align: center;
   min-height: 1000px;
-  background-color: #f2f2ed;
   width: 100%; }
 
 .Todo-App {
@@ -9,25 +11,10 @@
   text-align: left;
   padding-top: 100px; }
 
-input {
-  font-size: 20px; }
-
+/* Begin Helper Classes ----------------------------------------------- */
 .error {
   color: red;
   float: right; }
-
-/* Helper Classes */
-#descriptionIcon {
-  position: relative;
-  top: 3px; }
-
-/* change to a class */
-.addDelIcon {
-  padding-top: 24px;
-  padding-right: 18px; }
-
-.addDelIcon:hover {
-  cursor: pointer; }
 
 .blue-background {
   background-color: rgba(0, 71, 187, 0.12) !important;
@@ -45,12 +32,14 @@ input {
 .sm-17 {
   font-size: 17px; }
 
-/* App.js */
+/* End Helper Classes ----------------------------------------------- */
+/* App.js ----------------------------------------------- */
 h1 {
   padding: 0;
   margin: 0; }
 
 input {
+  font-size: 20px;
   box-shadow: none;
   border: none;
   background-color: #fafafa;
@@ -66,36 +55,19 @@ input {
 input:focus {
   outline: none; }
 
-.regular-checkbox {
-  -webkit-appearance: none;
-  background-color: #fafafa;
-  border: 2px solid grey;
-  height: 18px;
-  width: 18px;
-  border-radius: 2px; }
-
-.regular-checkbox:checked {
-  background-color: #0047bb !important; }
-
-select {
-  background: transparent;
-  border: none; }
-
-select option {
-  color: red; }
-
-select:focus {
-  outline: none; }
-
+/* Begin Tables styles within App.js ------ */
 #tableContainer {
   max-height: 500px;
-  overflow-y: scroll; }
+  overflow-y: auto; }
 
 table {
   margin-top: 0;
   background-color: #fafafa;
   width: 1024px;
-  border-spacing: 0; }
+  border-spacing: 0;
+  /* Checkbox styles*/
+  /* Select dropdown styles */
+  /* Shrink title and description inputs for smaller screens */ }
 
 table td {
   padding: 10px;
@@ -110,19 +82,6 @@ table td {
   letter-spacing: normal;
   color: rgba(0, 0, 0, 0.87);
   border-top: 1px solid	#C0C0C0; }
-
-table .description {
-  width: 275px;
-  /* set styles for pencil icon next to description */ }
-
-table .description i {
-  cursor: pointer;
-  float: right;
-  padding-right: 10px; }
-
-@media (max-width: 600px) {
-  table {
-    /* Hide some of the tds */ } }
 
 table th {
   padding: 10px;
@@ -143,10 +102,8 @@ table tr {
   height: 48px;
   background-color: #fafafa; }
 
-table .todoRow .regular-checkbox:hover {
-  cursor: pointer; }
-
 table .todoRow:hover {
+  /* Highlight all elements within the todoRow (tr) */
   background-color: #ededed;
   transition: all 0.3s ease-in-out; }
 
@@ -158,11 +115,48 @@ table .todoRow:hover input {
   transition: all 0.3s ease-in-out;
   background-color: #ededed; }
 
-/* TodoRowHeader */
-#todoRowHeader {
-  height: 56px; }
+table .regular-checkbox {
+  -webkit-appearance: none;
+  background-color: #fafafa;
+  border: 2px solid grey;
+  height: 18px;
+  width: 18px;
+  border-radius: 2px; }
 
-/* Modal Styles (app.js) */
+table .regular-checkbox:checked {
+  background-color: #0047bb !important; }
+
+table .regular-checkbox:hover {
+  cursor: pointer; }
+
+table select {
+  background: transparent;
+  border: none; }
+
+table select option {
+  color: red; }
+
+table select:focus {
+  outline: none; }
+
+table .description {
+  width: 275px;
+  /* set styles for pencil icon next to description */ }
+
+table .description i {
+  cursor: pointer;
+  float: right;
+  padding-right: 10px; }
+
+@media (max-width: 900px) {
+  table .title {
+    width: 50px; }
+  table .description {
+    width: 75px !important; } }
+
+/* End Tables styles within App.js ------ */
+/* End App.js ----------------------------------------------- */
+/* Start Modal Styles (app.js) ----------------------------------------------- */
 #modalTitle {
   width: 40px;
   height: 28px;
@@ -232,40 +226,8 @@ table .todoRow:hover input {
 #modalBtns #closeModal {
   margin-right: 8px; }
 
-#saveModal {
-  background-color: #fafafa; }
-
-#descriptionInput {
-  z-index: 1; }
-
-/* End Modal Styles (app.js) */
-.timeInput {
-  width: 50px; }
-
-.percentInput {
-  width: 50px; }
-
-/* SelectedTodo.js */
-.selectedTodo {
-  margin: 0;
-  background-color: #fafafa;
-  width: 1024px;
-  height: 64px;
-  transition: all 0.3s ease-in-out; }
-
-.selectedTodo #selectedTitle {
-  transition: all 0.3s ease-in-out;
-  padding-top: 20px;
-  padding-left: 24px;
-  font-family: Roboto;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.5;
-  letter-spacing: normal;
-  color: #0047bb; }
-
+/* End Modal Styles (app.js) ----------------------------------------------- */
+/* Begin ActionsHeader.js ----------------------------------------------- */
 .tableTitleDiv {
   float: left; }
 
@@ -289,6 +251,41 @@ table .todoRow:hover input {
   letter-spacing: normal;
   color: rgba(0, 0, 0, 0.87); }
 
+/* Styles for add and delete todo buttons*/
+.addDelIcon {
+  padding-top: 24px;
+  padding-right: 18px; }
+
+.addDelIcon:hover {
+  cursor: pointer; }
+
+.selectedTodo {
+  margin: 0;
+  background-color: #fafafa;
+  width: 1024px;
+  height: 64px;
+  transition: all 0.3s ease-in-out; }
+
+.selectedTodo #selectedTitle {
+  transition: all 0.3s ease-in-out;
+  padding-top: 20px;
+  padding-left: 24px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  color: #0047bb; }
+
+/* End ActionsHeader.js ----------------------------------------------- */
+/* Start TodoRowHeader ----------------------------------------------- */
+#todoRowHeader {
+  height: 56px; }
+
+/* End TodoRowHeader ----------------------------------------------- */
+/* Start TodoRow.js ----------------------------------------------- */
 .input-icon {
   position: relative; }
 
@@ -302,7 +299,32 @@ table .todoRow:hover input {
   text-align: center;
   font-style: normal; }
 
-/* Start Footer */
+/* Input Icons for % and hours */
+.input-icon > input {
+  padding-left: 25px;
+  padding-right: 0; }
+
+.input-icon-right > i {
+  text-align: left;
+  right: 0; }
+
+.input-icon-right > input {
+  padding-left: 0;
+  padding-right: 5px;
+  text-align: right; }
+
+.timeInput {
+  width: 50px; }
+
+.percentInput {
+  width: 50px; }
+
+#descriptionIcon {
+  position: relative;
+  top: 3px; }
+
+/* End TodoRow.js ----------------------------------------------- */
+/* Start Footer.js ----------------------------------------------- */
 #footer {
   width: 1024px;
   height: 56px;
@@ -342,17 +364,4 @@ table .todoRow:hover input {
   top: 15px;
   padding-right: 50px; }
 
-/* End Footer */
-/* Input Icons for % and hours */
-.input-icon > input {
-  padding-left: 25px;
-  padding-right: 0; }
-
-.input-icon-right > i {
-  text-align: left;
-  right: 0; }
-
-.input-icon-right > input {
-  padding-left: 0;
-  padding-right: 5px;
-  text-align: right; }
+/* End Footer.js ----------------------------------------------- */

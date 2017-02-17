@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { partial } from '../../lib/utils';
 
-export const SelectedTodo = (props) => {
+export const ActionsHeader = (props) => {
   const openModal = partial(props.openModal, null, 'titleModal');
 
   if (props.selectedTodos.length) {
@@ -31,4 +31,10 @@ export const SelectedTodo = (props) => {
       </div>
     );
   }
+};
+
+ActionsHeader.propTypes = {
+  openModal: PropTypes.func,
+  handleRemove: PropTypes.func,
+  selectedTodos: PropTypes.string
 };

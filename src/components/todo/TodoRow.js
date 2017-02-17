@@ -24,6 +24,7 @@ export class TodoRow extends Component {
         </td>
         <td>
           <input
+            className="title"
             value={title}
             onChange={changeTitle}
           />
@@ -62,5 +63,11 @@ export class TodoRow extends Component {
 }
 
 TodoRow.propTypes = {
-  handleImportanceChange: PropTypes.func.isRequired
+  handleImportanceChange: PropTypes.func,
+  handlePercentChange: PropTypes.func,
+  handleToggle: PropTypes.func,
+  handleTimeChange: PropTypes.func,
+  changeTitle: PropTypes.func,
+  openModal: PropTypes.func,
+  todo: PropTypes.object
 };
