@@ -1,4 +1,4 @@
-export const modalStyles = {
+export const centeredModalStyles = {
   overlay: {
     position          : 'fixed',
     top               : 0,

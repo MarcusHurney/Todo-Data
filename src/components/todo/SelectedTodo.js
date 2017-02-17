@@ -1,6 +1,9 @@
 import React from 'react';
+import { partial } from '../../lib/utils';
 
 export const SelectedTodo = (props) => {
+  const openModal = partial(props.openModal, null, 'titleModal');
+
   if (props.selectedTodos.length) {
     return (
       <div className="selectedTodo blue-background">
@@ -22,7 +25,7 @@ export const SelectedTodo = (props) => {
         </div>
         <div className="tableActionsDiv">
           <i className="addDelIcon material-icons grey"
-            onClick={props.openModal}>add</i>
+            onClick={openModal}>add</i>
           <i className="material-icons grey">more_vert</i>
         </div>
       </div>
